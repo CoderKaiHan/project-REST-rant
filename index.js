@@ -2,9 +2,9 @@ require('dotenv').config();
 
 const express = require('express');
 
-app.use('/places',require('./controllers/places'))
-
 const app = express();
+
+app.use('/places',require('./controllers/places'))
 
 app.get('/', (req, res) => {
     res.send('Hello world!')
