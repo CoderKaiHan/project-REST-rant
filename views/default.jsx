@@ -1,4 +1,4 @@
-const React = require('react')
+const React = require('react');
 
 function Def (html) {
     return (
@@ -10,7 +10,7 @@ function Def (html) {
                 {html.children}
             </body>
         </html>
-    )
+    );
   }
   
 
