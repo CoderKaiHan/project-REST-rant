@@ -22,5 +22,10 @@ router.get('/', (req, res) => {
     // res.send('GET /places');
 });
 
+router.post('/',(req,res)=>{
+  res.send('POST/post stub')
+  // res.redirect('/places');
+});
+
 module.exports = router;
 
