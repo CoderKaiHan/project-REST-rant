@@ -23,7 +23,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/',(req,res)=>{
-  res.send('POST/post stub')
+  console.log(req.body);
+  res.send('POST/post stub');
   // res.redirect('/places');
 });
 
