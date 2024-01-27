@@ -30,10 +30,20 @@ router.get('/:id/edit', (req, res) => {
 });
 
 //UPDATE
-router.put('/:id', (req,res)=>{
-  places[req.params.id] = req.body;
-  res.send('hha');
+router.put('/:id', (req, res) => {
+  let id = Number(req.params.id);
+  if (isNaN(id)) {
+      res.render('error404');
+  }
+  else if (!places[id]) {
+      res.render('error404');
+  }
+  else {
+      places[id]=req.body;
+      res.redirect(`/places/${id}`);
+  }
 });
+
 
 //DELETE
 router.delete('/:id', (req, res) => {

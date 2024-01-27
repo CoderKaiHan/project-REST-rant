@@ -7,8 +7,7 @@ function edit_form (data) {
           <main>
             <h1>Edit Place</h1>
             <form action={`/places/${data.place.id}?_method=PUT`} method="POST">
-            <div className="row">
-                <div className="form-group col-sm-6">
+                <div className='col-sm-6'>    
                     <label htmlFor="name">Place Name</label>
                     <input 
                     id="name" 
@@ -17,32 +16,24 @@ function edit_form (data) {
                     type='text'
                     value={data.place.name} 
                     required />
-                </div>
-                <div className="form-group col-sm-6">
                     <label htmlFor="pic">Place Picture(URL)</label>
                     <input id="pic" 
                     className="form-control" 
                     name="pic" 
                     type="url"  />
-                </div>
-                <div className="form-group col-sm-6">
                     <label htmlFor="city">City</label>
                     <input 
                     id="city" 
                     className="form-control" 
                     name="city" 
                     type="Text" 
-                    value={data.place.city} />
-                </div>
-                <div className="form-group col-sm-6">
+                    value={data.place.city} /> 
                     <label htmlFor="state">State</label>
                     <input id="state" 
                     className="form-control" 
                     name="state" 
                     type="Text" 
                     value={data.place.state} />
-                </div>
-                <div className="form-group col-sm-6">
                     <label htmlFor="cuisines">Cuisines</label>
                     <input 
                     id="cuisines" 
@@ -51,12 +42,11 @@ function edit_form (data) {
                     type="Text"
                     value={data.place.cuisines}  
                     required />
-            </div>
+                </div>
                 <input 
                 className="btn btn-primary" 
                 type="submit" 
                 />
-                </div>
             </form>
           </main>
         </Def>
