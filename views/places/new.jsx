@@ -53,7 +53,8 @@ function new_form(){
                         <input
                         id="founded"
                         className="form-control"
-                        name="founded"                        type="Text" />
+                        name="founded"                        type="Number" 
+                        value={new Date().getFullYear() }/>
                     </div>
                     <input 
                     className="btn btn-primary" 
