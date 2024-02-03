@@ -8,11 +8,10 @@ function show (data) {
             <h1>{data.place.name}</h1>
             <h3>Rating</h3>
             <p>Not Rated</p>
-            <h3>Best Dishes</h3>
-            <p>{data.place.cuisines}</p>
-            <h3>Location</h3>
-            <p>{data.place.city}, {data.place.state}</p>
+            <h3>{data.place.showEstablished()}</h3>
+            <h4>Serving {data.place.cuisines}</h4>
             <img src={`${data.place.pic}`} alt={`${data.place.name}`} />
+            <h3>Located in {data.place.city}, {data.place.state}</h3>
             <h3>Comments</h3>
             <p>No comments yet!</p>
             <a href={`/places/${data.id}/edit`} className='btn btn-warning'>
