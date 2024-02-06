@@ -35,10 +35,13 @@ function show (data) {
             <h3>Located in {data.place.city}, {data.place.state}</h3>
             <h2>Comments</h2>
             {comments}
-            <a href={`/places/${data.id}/edit`} className='btn btn-warning'>
+            <a href={`/places/${data.place.id}/edit`} className='btn btn-warning'>
                 Edit
             </a>
-            <form action={`/places/${data.id}?_method=DELETE`} method='POST'>
+            <a href={`/places/${data.place.id}/comment`} className='btn btn-warning'>
+                Comment
+            </a>
+            <form action={`/places/${data.place.id}?_method=DELETE`} method='POST'>
                 <input type="submit" value={`Delete`} className='btn btn-danger'/>
             </form>
           </main>
