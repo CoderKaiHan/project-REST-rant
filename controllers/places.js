@@ -116,6 +116,33 @@ router.post('/:id/comment',(req,res) =>{
   })
 });
 
+//COMMENT DELETE ROUTE
+router.delete('/:placeId/comment/:commentId', async (req,res) =>{
+  const { placeId, commentId } = req.params;
+
+  try {
+    const place = await db.Place.findById(placeId);
+    
+    if (!place) {
+        return res.status(404).render('error404');
+    }
+
+    const index = place.comments.indexOf(commentId);
+    if (index > -1) {
+        place.comments.splice(index, 1);
+    }
+
+    await place.save();
+
+    await db.Comment.findByIdAndDelete(commentId);
+
+    res.redirect(`/places/${placeId}`);
+} catch (err) {
+    console.error('Error:', err);
+    res.render('error404');
+}
+});
+
 
 //DELETE
 router.delete('/:id', (req, res) => {

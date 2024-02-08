@@ -43,6 +43,12 @@ function show (data) {
             <strong> - {c.author}</strong>
           </h3>
           <h4>Rating: {c.stars}</h4>
+          <form action={`/places/${data.place.id}/comment/${c.id}?_method=DELETE`} method="POST">
+            <input type="submit"
+              className="btn btn-danger"
+              value="Delete comment" 
+            />
+          </form>
         </div>
       )
     })
@@ -66,7 +72,10 @@ function show (data) {
                 Comment
             </a>
             <form action={`/places/${data.place.id}?_method=DELETE`} method='POST'>
-                <input type="submit" value={`Delete`} className='btn btn-danger'/>
+              <input type="submit" 
+                value={`Delete`} 
+                className='btn btn-danger'
+              />
             </form>
           </main>
         </Def>
