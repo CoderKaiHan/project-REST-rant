@@ -13,9 +13,34 @@ router.get('/', (req, res) => {
   })
 });
 
-//NEW
+//NEW GET ROUTE
 router.get('/new', (req,res)=>{
   res.render('places/new');
+});
+
+//NEW POST ROUTE
+router.post('/', (req, res) => {
+  const { name, pic, cuisines, city, state, founded } = req.body;
+
+  let picUrl = pic ? pic : 'http://placekitten.com/350/350'; 
+
+  const newPlaceData = {
+      name: name,
+      pic: picUrl,
+      cuisines: cuisines,
+      city: city,
+      state: state,
+      founded: founded
+  };
+
+  db.Place.create(newPlaceData)
+  .then(()=>{
+    res.redirect('/places');
+  })
+  .catch(err =>{
+    console.log('err', err);
+    res.render('error404');
+  })
 });
 
 //SHOW
@@ -51,10 +76,14 @@ router.put('/:id', (req, res) => {
     .then(()=> {
       res.redirect(`/places/${req.params.id}`)
     })
+    .catch(err =>{
+      console.log('err', err);
+      res.render('error404');
+    })
   })
 });
 
-//COMMENT
+//COMMENT GET ROUTE
 router.get('/:id/comment', (req,res) => {
   console.log(req.body);
   req.body.rant = req.body.rant ? true : false;
@@ -66,6 +95,7 @@ router.get('/:id/comment', (req,res) => {
   )
 });
 
+//COMMENT POST ROUTE
 router.post('/:id/comment',(req,res) =>{
   db.Place.findById(req.params.id)
   .then(place => {
@@ -97,27 +127,6 @@ router.delete('/:id', (req, res) => {
     res.render('error404')
   })
 });
-
-
-//CREATE-NEW
-router.post('/', (req, res) => {
-  db.Place.create(req.body)
-  .then(()=>{
-    res.redirect('/places');
-  })
-  .catch(err =>{
-    console.log('err', err);
-    res.render('error404');
-  })
-});
-
-// router.post('/:id/rant', (req,res)=>{
-//   res.send('GET /places/:id/rant stub');
-// });
-
-// router.delete('/:id/rant/:rantId', (req,res)=>{
-//   res.send('GET /places/:id/rant/:rantId stub');
-// });
 
 
 module.exports = router;

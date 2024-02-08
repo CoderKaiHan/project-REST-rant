@@ -31,11 +31,12 @@ function show (data) {
         {stars} stars
       </h3>
     )
+
     comments = data.place.comments.map ( c => {
       return (
         <div className='border'>
           <h2 className='rant'>
-            {c.rant ? 'Rant!' : 'Rave!'}
+            {c.rant ? 'Rant!😡' : 'Rave!😍'}
           </h2>
           <h4>{c.content}</h4>
           <h3>
