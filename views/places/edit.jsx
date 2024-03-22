@@ -19,8 +19,9 @@ function edit_form (data) {
                     <label htmlFor="pic">Place Picture(URL)</label>
                     <input id="pic" 
                     className="form-control" 
-                    name="pic" 
-                    type="url"  />
+                    name="pic"
+                    value={data.place.pic} 
+                    type="url" readOnly />
                     <label htmlFor="city">City</label>
                     <input 
                     id="city" 
